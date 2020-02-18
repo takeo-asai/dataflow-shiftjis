@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.sherter.google-java-format' version '0.8'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:28.1-jre'
+
+    compile group: 'org.apache.beam', name: 'beam-sdks-java-core', version: '2.19.0'
+    compile group: 'org.apache.beam', name: 'beam-runners-direct-java', version: '2.19.0'
+    compile group: 'org.apache.beam', name: 'beam-sdks-java-extensions-sql', version: '2.19.0'
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+}
+
+application {
+    mainClassName = 'dataflow.shiftjis.App'
+}
+run {
+    if (project.hasProperty('args')) {
+        args project.args.split('\\s')
+    }
+}
