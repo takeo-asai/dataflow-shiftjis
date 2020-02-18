@@ -6,5 +6,5 @@
 
 
 ```bash:
-./gradlew jacocoTestReport
+./gradlew test jacocoTestReport
 ```
